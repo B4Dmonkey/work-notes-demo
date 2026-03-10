@@ -1,0 +1,56 @@
+version: '3'
+
+tasks:
+  stride:review:
+    desc: Fetch Obsidian Stride daily notes (pass custom flags)
+    cmds:
+      - ./stride-notes.sh {{.CLI_ARGS}}
+    dir: '{{.TASKFILE_DIR}}'
+
+  stride:week:
+    desc: List this week's stride notes
+    cmds:
+      - ./stride-notes.sh -w -l
+    dir: '{{.TASKFILE_DIR}}'
+
+  stride:week:read:
+    desc: Read this week's stride notes
+    cmds:
+      - ./stride-notes.sh -w -r
+    dir: '{{.TASKFILE_DIR}}'
+
+  stride:month:
+    desc: List past month's stride notes
+    cmds:
+      - ./stride-notes.sh -m -l
+    dir: '{{.TASKFILE_DIR}}'
+
+  stride:month:read:
+    desc: Read past month's stride notes
+    cmds:
+      - ./stride-notes.sh -m -r
+    dir: '{{.TASKFILE_DIR}}'
+
+  stride:6months:
+    desc: List past 6 months of stride notes
+    cmds:
+      - ./stride-notes.sh -6 -l
+    dir: '{{.TASKFILE_DIR}}'
+
+  stride:6months:read:
+    desc: Read past 6 months of stride notes
+    cmds:
+      - ./stride-notes.sh -6 -r
+    dir: '{{.TASKFILE_DIR}}'
+
+  stride:from:
+    desc: "List stride notes from a date (usage: task stride:from -- 2026-02-15)"
+    cmds:
+      - ./stride-notes.sh -f {{.CLI_ARGS}} -l
+    dir: '{{.TASKFILE_DIR}}'
+
+  stride:from:read:
+    desc: "Read stride notes from a date (usage: task stride:from:read -- 2026-02-15)"
+    cmds:
+      - ./stride-notes.sh -f {{.CLI_ARGS}} -r
+    dir: '{{.TASKFILE_DIR}}'
